@@ -1,0 +1,313 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: white;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 25px;
+
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.nav-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.icon:hover {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #94a3b8;
+}
+
+/* layout */
+.container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* glass */
+.glass {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 15px;
+}
+
+/* sidebar */
+.sidebar {
+    width: 280px;
+}
+
+.sidebar input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* order */
+.order {
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+}
+
+.order.active {
+    background: #3b82f6;
+}
+
+/* content */
+.content {
+    flex: 1;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+/* timeline */
+.timeline {
+    padding-left: 30px;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    width: 2px;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+}
+
+.item {
+    position: relative;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+}
+
+.item::before {
+    content: "";
+    position: absolute;
+    left: -22px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: #888;
+    border-radius: 50%;
+}
+
+.item.new::before {
+    background: #3b82f6;
+}
+
+/* order container */
+.order {
+    position: relative;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background: rgba(255,255,255,0.05);
+    cursor: pointer;
+}
+
+/* content tránh đè nút */
+.order-content {
+    padding-right: 30px;
+}
+
+/* delete button */
+.delete-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+
+    width: 20px;
+    height: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    opacity: 0.3;
+    transition: 0.2s;
+}
+
+/* icon svg */
+.delete-btn svg {
+    width: 14px;
+    height: 14px;
+}
+
+/* hover effect */
+.delete-btn:hover {
+    opacity: 1;
+    background: rgba(239,68,68,0.2);
+    color: #f23d3d;
+    transform: scale(1.1);
+}
+
+/* hover cả card mới hiện rõ */
+.order:hover .delete-btn {
+    opacity: 0.7;
+}
+
+/* animation xoá */
+.order.removing {
+    opacity: 0;
+    transform: translateX(20px);
+    transition: all 0.25s ease;
+}
+
+/* tránh bị dính trạng thái click */
+.order {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.order:active {
+    background: rgba(255,255,255,0.08);
+}
+
+.order {
+    transition: 
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border 0.2s ease;
+}
+
+/* ===== ACTIVE (đang xem) ===== */
+.order.active {
+    background: linear-gradient(135deg, #3b82f6, #25eb7b);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== NEW (chưa xem) ===== */
+.order.new {
+    border: 1px solid #3b82f6;
+}
+
+/* chấm thông báo */
+.badge {
+    width: 7.5px;
+    height: 7.5px;
+    background: #a11818;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 12px;
+    right: 14px;
+    animation: blink 1s infinite;
+    animation: glows 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes glows {
+    from {
+        box-shadow: 0 0 0 rgba(255,92,92, 0.2);
+    }
+    to {
+        box-shadow: 0 0 12px rgba(255,92,92, 1);}
+}
+
+@keyframes blink {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.3); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* animation nhẹ */
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.item.latest {
+    box-shadow: 0 0 0 rgba(34,197,94, 0.6);
+    animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        box-shadow: 0 0 0 rgba(34,197,94, 0.2);
+    }
+    to {
+        box-shadow: 0 0 12px rgba(34,197,94, 0.8);
+    }
+}
+
+.item.latest {
+    background: linear-gradient(135deg, #25eb9f, #081d4d);
+    color: red;
+    border-radius: 10px;
+    padding: 10px;
+    transform: scale(1.02);
+}
+
+.item.latest .title {
+    font-weight: 500;
+}
+
+.item.latest .time {
+    opacity: 0.9;
+    font-size: 12px;
+}
