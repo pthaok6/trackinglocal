@@ -12,7 +12,7 @@ from telegram.ext import (
 )
 from services.spx_api import get_tracking
 
-TOKEN = "8750661052:AAHYfxuF8Rc_EywXBBpsT4IVUhoF4Ds2agg"
+TOKEN = "8741593712:AAH51E7aCW5GgCXOd0RyuOgmWKVJ8cKmVUM"
 DATA_FILE = "data/orders.json"
 
 # ===== STORAGE =====
